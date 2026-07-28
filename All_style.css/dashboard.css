@@ -1,0 +1,45 @@
+*{
+    color: #E8D7F1;
+}
+
+body{
+    background-color: #0E273C;
+}
+
+navbar{
+    height: 10vh;
+    width: 99vw;
+    background-color: #3A1070;
+}
+
+#nav-space{
+    height: 10vh;
+    width: 99vw;
+    background-color: #3A1070;
+    display: flex;
+}
+
+#logo{
+    height: 50%;
+    width: 13%;
+    margin: 1%;
+    padding: 0.3%;
+    background-color: transparent;
+    text-align: center;
+    font-family: 'Cambria', 'Cochin', 'Georgia', 'Times', 'Times New Roman', 'serif';
+}
+
+#name-box{
+    margin: 1.8%;
+    margin-left: 72%;
+}
+
+#logout{
+    height:63%;
+    width: 7%;
+    margin: 1%;
+    border: 4px solid red;
+    border-radius: 24px;
+    background-color: transparent;
+    color: red;
+}
