@@ -1,6 +1,6 @@
-*{
-    color: #E8D7F1;
-}
+/* *{
+    color: #530fa6;
+} */
 
 body{
     background-color: #0E273C;
@@ -9,14 +9,21 @@ body{
 navbar{
     height: 10vh;
     width: 99vw;
-    background-color: #3A1070;
+    background-color: #682ba1;
+    /* color: #0E273C; */
 }
 
 #nav-space{
     height: 10vh;
-    width: 99vw;
-    background-color: #3A1070;
+    width: 98vw;
+    background-color: transparent;
+    /* color: #4a236e; */
     display: flex;
+    border-bottom: 1px solid gray;
+}
+
+#name-box{
+    color: antiquewhite;
 }
 
 #logo{
@@ -25,8 +32,11 @@ navbar{
     margin: 1%;
     padding: 0.3%;
     background-color: transparent;
+    color: #7330f0;
     text-align: center;
     font-family: 'Cambria', 'Cochin', 'Georgia', 'Times', 'Times New Roman', 'serif';
+    font-size: xx-large;
+    font-weight: 900;
 }
 
 #name-box{
@@ -42,4 +52,80 @@ navbar{
     border-radius: 24px;
     background-color: transparent;
     color: red;
+}
+
+#hero-section{
+    height: 90vh;
+    width: 85vw;
+    margin: 7%;
+    padding: 15px;
+    border: 2px solid white;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#score-space{
+    height: 60vh;
+    width: 60vw;
+    border: 2px solid white;
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.info-box{
+    height: 65%;
+    width: 27%;
+    border: 1px solid white;
+}
+
+#menu-heading{
+    color: wheat;
+}
+
+#menu-section{
+    height: 80vh;
+    width: 60vw;
+    margin: 5%;
+    border: 1px solid white;
+    background-color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#task-input{
+    height: max-content;
+    width: max-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#task-box{
+    height: 7vh;
+    width: 37vw;
+    border: 1px solid #96929c;
+    border-radius: 8px;
+    background-color: transparent;
+}
+
+#add-task{
+    height: auto;
+    width: 17%;
+    border: transparent;
+    border-radius: 8px;
+    background-color: #7330f0;
+    margin: 3px;
+}
+
+#task-space{
+    height: max-content;
+    width: max-content;
 }
