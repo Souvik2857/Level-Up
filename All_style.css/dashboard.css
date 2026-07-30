@@ -3,22 +3,28 @@
 } */
 
 body{
-    background-color: #0E273C;
+    background-color: #0b0e14;
 }
 
 navbar{
     height: 10vh;
     width: 99vw;
-    background-color: #682ba1;
-    /* color: #0E273C; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
 }
 
 #nav-space{
     height: 10vh;
-    width: 98vw;
-    background-color: transparent;
+    width: 99vw;
+    background-color: #0a0e16;
     /* color: #4a236e; */
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     border-bottom: 1px solid gray;
 }
 
@@ -32,16 +38,36 @@ navbar{
     margin: 1%;
     padding: 0.3%;
     background-color: transparent;
-    color: #7330f0;
+    color: #a855f7;
     text-align: center;
     font-family: 'Cambria', 'Cochin', 'Georgia', 'Times', 'Times New Roman', 'serif';
     font-size: xx-large;
     font-weight: 900;
 }
 
+#sub-choose{
+    height: 1.5rem;
+    width: 10%;
+    border: 1px solid #96929c;
+    border-radius: 8px;
+    background-color: #0f131c;
+    color: bisque;
+    margin-left: 10%;
+}
+
+#sub-enter{
+    height: 1.5rem;
+    width: 5%;
+    border: transparent;
+    border-radius: 8px;
+    background-color: #7330f0;
+    margin-left: 5px;
+    transition: transform 0.5s ease;
+}
+
 #name-box{
     margin: 1.8%;
-    margin-left: 72%;
+    margin-left: 40%;
 }
 
 #logout{
@@ -52,6 +78,7 @@ navbar{
     border-radius: 24px;
     background-color: transparent;
     color: red;
+    transition: transform 0.6s ease;
 }
 
 #hero-section{
@@ -59,7 +86,6 @@ navbar{
     width: 85vw;
     margin: 7%;
     padding: 15px;
-    border: 2px solid white;
     background-color: transparent;
     display: flex;
     flex-direction: column;
@@ -70,7 +96,6 @@ navbar{
 #score-space{
     height: 60vh;
     width: 60vw;
-    border: 2px solid white;
     background-color: transparent;
     display: flex;
     flex-direction: row;
@@ -79,21 +104,48 @@ navbar{
 }
 
 .info-box{
-    height: 65%;
-    width: 27%;
-    border: 1px solid white;
+    height: 73%;
+    width: 30%;
+    border-top: 4px solid #4f7df3;
+    border-radius: 11px;
+    background-color: #141c2b;
+    color: #a855f7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-size: x-large;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif';
+    transition: transform 0.7s ease;
 }
 
 #menu-heading{
+    width: 90%;
     color: wheat;
+    border-bottom: 1px solid #96929c;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#task-status{
+    height: 49%;
+    width: 13%;
+    border-radius: 22px;
+    background-color: #314569;
+    color: #5d8fecdd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #menu-section{
-    height: 80vh;
+    height: 100vh;
     width: 60vw;
     margin: 5%;
-    border: 1px solid white;
-    background-color: transparent;
+    border-radius: 17px;
+    background-color: #141c2b;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -106,6 +158,7 @@ navbar{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    margin: 5;
 }
 
 #task-box{
@@ -113,19 +166,47 @@ navbar{
     width: 37vw;
     border: 1px solid #96929c;
     border-radius: 8px;
-    background-color: transparent;
+    background-color: #0f131c;
+    color: bisque;
 }
 
 #add-task{
     height: auto;
     width: 17%;
     border: transparent;
-    border-radius: 8px;
+    border-radius: 12px;
     background-color: #7330f0;
-    margin: 3px;
+    margin-left: 8px;
+    transition: transform 0.5s ease;
 }
 
-#task-space{
-    height: max-content;
-    width: max-content;
+#task-space {
+    height: 400px;           
+    width: 90%;             
+    overflow-y: auto;      
+    padding: 10px;
+    margin: 5 auto;
+}
+
+#logout:hover{ 
+    background-color: rgba(230, 75, 75, 0.915);
+    color: whitesmoke;
+    cursor: pointer; 
+    transform: scale(1.1);
+}
+
+#sub-enter:hover{
+    cursor: pointer; 
+    transform: scale(1.05);
+}
+
+.info-box:hover{ 
+    background-color: #1c283fe0;
+    cursor: pointer; 
+    transform: scale(1.1);
+}
+
+#add-task:hover{ 
+    cursor: pointer; 
+    transform: scale(1.1);
 }
