@@ -39,5 +39,3 @@ btn.addEventListener('click', function(){
     userINFO.Email = mail;
     userINFO.Password = pass;
 })
-
-console.log(userINFO);
