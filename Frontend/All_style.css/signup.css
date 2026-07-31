@@ -1,0 +1,83 @@
+body{
+    background-color: black;
+}
+
+*{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+input{
+    height: 29px;
+    width: 340px;
+    border-radius: 3px;
+}
+
+button{
+    color: black;
+}
+
+#hero-section{
+    height: 90vh;
+    width: 75vw;
+    color: beige;
+    background-image: url('../assets/img12.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin: 2%;
+    margin-left: 14%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#contentBox{
+    height: 87%;
+    width: 39%;
+    border-radius: 48px;
+    background-color: #030530;
+    color: antiquewhite;
+    box-shadow: 8px 12px 16px 4px rgba(0, 0, 0, 0.75);
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: larger;
+}
+
+.boxes{
+    margin-top: 27px;
+}
+
+#validity{
+    color: bisque;
+    margin: 0%;
+}
+
+.btn{
+    background-color: black;
+    color: #00c6ff;
+    border: 1px solid white;
+}
+
+#signup{
+     height: 44px;
+    width: 114px;
+    color: #00c6ff;
+    text-align: center;
+    font-weight: bolder;
+    font-size: medium;
+    border: 5px solid white;
+    border-radius: 23px;
+    background-color: black;
+    transition: transform 0.5s ease;
+}
+
+#signup:hover{
+    background-color: #222222; 
+    cursor: pointer; 
+    transform: scale(1.1);
+}
