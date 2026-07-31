@@ -1,13 +1,42 @@
-// ─── GET ELEMENTS ───
 const addTask = document.querySelector('#add-task');
 const taskBox = document.querySelector('#task-box');
 const taskSpace = document.querySelector('#task-space');
 const taskStatus = document.querySelector('#task-status');
+const subChoose = document.querySelector('#sub-choose');
+const subEnter = document.querySelector('#sub-enter');
 
-// ─── CREATE ARRAY ───
+/*--------------------Sub-Choose Object-------------*/
+let userSub={};
+let enter = 0;
+
+subEnter.addEventListener('click', function(){
+    const enterVal = subChoose.value;
+
+    if(enterVal.length === 0){
+        alert("Enter a subject!");
+        enter = 0;
+    }
+
+    enter = 1;
+    userSub.subject = enterVal;
+    userSub.time = Date();
+    
+    /*------------Sub Enter ---------------------*/
+    
+    if(enter === 1){
+        subChoose.style.textDecoration = 'line-through';
+        subChoose.style.backgroundColor = 'transparent';
+        subChoose.disabled = true;
+        subChoose.style.color = '#475569';
+        subEnter.disabled = true;
+        subEnter.style.background = 'transparent';
+    }
+})
+
+
+/*------------Create Object--------------------*/
 let taskList = [];
 
-// ─── COUNT COMPLETED TASKS ───
 function countCompletedTasks() {
     let count = 0;
     for (let i = 0; i < taskList.length; i++) {
@@ -15,7 +44,7 @@ function countCompletedTasks() {
             count++;
         }
     }
-    return count; // ✅ Fixed: Return the count
+    return count;
 }
 
 /*---------Display Function------------ */
@@ -45,7 +74,6 @@ function display() {
     
     /*--------------Display Tasks--------------------------*/
     for (let i = 0; i < taskList.length; i++) {
-        // ─── CHECKBOX ───
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.checked = taskList[i].completed;
@@ -55,7 +83,6 @@ function display() {
         checkbox.style.accentColor = '#4f7df3';
         checkbox.style.cursor = 'pointer';
         
-        // ⭐ FIX: Use taskList[i].completed
         checkbox.addEventListener('change', function() {
             if(checkbox.checked){
                 taskList[i].completed = true;
@@ -64,7 +91,6 @@ function display() {
             }
         });
         
-        // ─── TASK TEXT ───
         const taskElement = document.createElement('p');
         taskElement.textContent = taskList[i].text;
         taskElement.style.color = '#e8edf5';
@@ -77,7 +103,6 @@ function display() {
         taskElement.style.borderRadius = '8px';
         taskElement.style.borderLeft = '3px solid #4f7df3';
         
-        // ─── COMPLETED STYLING ───
         if (taskList[i].completed) {
             taskElement.style.textDecoration = 'line-through';
             taskElement.style.color = '#475569';
@@ -88,19 +113,18 @@ function display() {
             taskElement.style.borderLeftColor = '#4f7df3';
         }
         
-        // ─── CONTAINER ───
         const container = document.createElement('div');
         container.style.display = 'flex';
         container.style.alignItems = 'center';
         container.style.marginBottom = '6px';
         
         container.appendChild(checkbox);
-        container.appendChild(taskElement); // ✅ Only add it ONCE
+        container.appendChild(taskElement);
         taskSpace.appendChild(container);
     }
 }
 
-// ─── ADD BUTTON ───
+/*-----------------Task Box-------------------*/
 addTask.addEventListener('click', function() {
     const typedVal = taskBox.value.trim();
     
@@ -114,12 +138,11 @@ addTask.addEventListener('click', function() {
         completed: false,
     });
     
-    console.log("📦 Current taskList:", taskList);
     taskBox.value = '';
     display();
 });
 
-// ─── ENTER KEY ───
+/*-------------Enter Key-------------------------*/
 taskBox.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
         event.preventDefault();
@@ -127,4 +150,6 @@ taskBox.addEventListener('keydown', function(event) {
     }
 });
 
-// display();
+
+
+console.log(userSub);
