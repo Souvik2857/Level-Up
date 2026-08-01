@@ -149,7 +149,3 @@ taskBox.addEventListener('keydown', function(event) {
         addTask.click();
     }
 });
-
-
-
-console.log(userSub);
