@@ -30,12 +30,34 @@ userEmail.addEventListener('input', function(){
 
 /*------------------Input Saving Section----------------*/
 
+async function validateUser() {
+    const res=await fetch('http://localhost:5000/api/login',{method:'POST',headers:{
+        'Content-Type':'application/json'
+    },body:JSON.stringify(userINFO)});
+    const data=await res.json();
+    return data;
+}
+
 const userINFO = {};
 
-btn.addEventListener('click', function(){
+btn.addEventListener('click', async function(){
     const mail = userEmail.value;
     const pass = userPass.value;
 
-    userINFO.Email = mail;
-    userINFO.Password = pass;
+    userINFO.email = mail;
+    userINFO.password = pass;
+    const value=await validateUser();
+    
+    if(value.isNew===true){
+        window.location.href="signup.html"
+    }
+    if(value.success===true){
+        window.location.href="dashboard.html"
+    }
+    if(value.success===false){
+        feedback.style.color='red'
+        feedback.textContent=`${value.message}`
+    }
+
+    
 })

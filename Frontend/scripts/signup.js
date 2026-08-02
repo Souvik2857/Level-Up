@@ -35,9 +35,9 @@ signup.addEventListener('click', function() {
     const Email = mail.value;
     const userPass = pass.value;
 
-    newUserINFO.Userame = userName;
-    newUserINFO.mail = Email;
-    newUserINFO.Password = userPass;
+    newUserINFO.userame = userName;
+    newUserINFO.email = Email;
+    newUserINFO.password = userPass;
 })
 
 console.log(newUserINFO);
