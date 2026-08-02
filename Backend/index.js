@@ -26,7 +26,7 @@ const ailimiter=rateLimit({
 
 const loginlimiter=rateLimit({
   windowMs:2*60*1000,
-  max:5,
+  max:10,
   message:{message:"Too many login attempts try again after few minutes"}
 })
 
@@ -129,9 +129,9 @@ app.post("/api/login",loginlimiter, async (req, res) => {
     if (isValid) {
       return res.send({ success: true });
     }
-    res.send({ success: false });
+    res.send({ success: false ,message:"Password mismatched"});
   } else {
-    res.send({ message: "Not a previous User", success: false });
+    res.send({ message: "Not a previous User", isNew:true });
   }
 });
 
