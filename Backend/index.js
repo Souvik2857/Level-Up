@@ -8,7 +8,7 @@ const Task = require("./models/Tasks");
 const cors = require("cors");
 const { GoogleGenAI } = require("@google/genai");
 const nodemailer = require("nodemailer");
-const rateLimit=require('express-rate-limit');
+const rateLimit = require("express-rate-limit");
 require("dotenv").config();
 
 app.use(express.json());
@@ -17,18 +17,21 @@ app.use(cors());
 mongoose.connect(process.env.MONGO_URI);
 //set up the ai
 const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API });
-//rate limit for AI 5 min 2 request 
-const ailimiter=rateLimit({
-  windowMs:5*60*1000,
-  max:2,
-  message:{message:"Too many request please try again after 5 minutes",success:false}
-})
+//rate limit for AI 5 min 2 request
+const ailimiter = rateLimit({
+  windowMs: 5 * 60 * 1000,
+  max: 2,
+  message: {
+    message: "Too many request please try again after 5 minutes",
+    success: false,
+  },
+});
 
-const loginlimiter=rateLimit({
-  windowMs:2*60*1000,
-  max:10,
-  message:{message:"Too many login attempts try again after few minutes"}
-})
+const loginlimiter = rateLimit({
+  windowMs: 2 * 60 * 1000,
+  max: 10,
+  message: { message: "Too many login attempts try again after few minutes" },
+});
 
 //create transporter
 const transporter = nodemailer.createTransport({
@@ -41,10 +44,8 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-
-
 //API key end-point
-app.post("/api/gemini/test",ailimiter, async (req, res) => {
+app.post("/api/gemini/test", ailimiter, async (req, res) => {
   const userSubject = req.body;
   const content = userSubject.subject;
   try {
@@ -89,14 +90,20 @@ app.post("/api/gemini/check", async (req, res) => {
 //For registretion/New user validation
 app.post("/api/register", async (req, res) => {
   const userData = req.body;
+  let securityPin;
+  let isUnique;
   const find = await User.findOne({ email: userData.email });
   if (!find) {
+    do {
+      securityPin = Math.floor(Math.random() * 1000);
+      isUnique = await User.findOne({ securityKey: securityPin });
+    } while (isUnique);
     const securePass = await bcrypt.hash(userData.password, 10);
     const data = await User.create({
       email: userData.email,
       password: securePass,
       username: userData.username,
-      securityKey: Math.floor(Math.random() * 1000),
+      securityKey: securityPin,
     });
     //Add the default data to task
     const addTaskOfUser = await Task.create({
@@ -112,7 +119,7 @@ app.post("/api/register", async (req, res) => {
         html: `<p>Hello ${data.username},<br> Welcome to Our System to Levelup your skills <b>Your security pin is ${data.securityKey}</b> do not share your security pin</p><br><p><b>Also make sure to complete your task at given time</b></p>`, // HTML body
       });
     } catch (err) {
-      res.send({ message: "Email not send", status:404 });
+      return res.send({ message: "Email not sent try again", status: 404 });
     }
 
     res.send({ success: true });
@@ -121,7 +128,7 @@ app.post("/api/register", async (req, res) => {
   }
 });
 //For Login validation and Security
-app.post("/api/login",loginlimiter, async (req, res) => {
+app.post("/api/login", loginlimiter, async (req, res) => {
   const userData = req.body;
   const find = await User.findOne({ email: userData.email });
   if (find) {
@@ -129,9 +136,9 @@ app.post("/api/login",loginlimiter, async (req, res) => {
     if (isValid) {
       return res.send({ success: true });
     }
-    res.send({ success: false ,message:"Password mismatched"});
+    res.send({ success: false, message: "Password mismatched" });
   } else {
-    res.send({ message: "Not a previous User", isNew:true });
+    res.send({ message: "Not a previous User", isNew: true });
   }
 });
 
@@ -142,7 +149,6 @@ app.post("/api/user/dashboard", async (req, res) => {
   if (isVerified) {
     const getUserTask = await Task.findOne({ email: isVerified.email });
 
-    
     try {
       const data = {
         email: isVerified.email,

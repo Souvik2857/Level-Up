@@ -1,52 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dashboard</title>
-    <link rel="stylesheet" href="../styles/dashboard.css">
-</head>
-<body>
+    <link rel="stylesheet" href="../styles/dashboard.css" />
+  </head>
+  <body>
     <navbar class="navbar">
-        <div id="nav-space">
-            <div id="logo"      class="nav">📈Level-Up</div>
-            <input id="sub-choose" class="nav" placeholder="Enter Your Subject">
-            <button id="sub-enter"><b>Enter</b></button>
-            <div id="name-box"  class="nav"><b>TEXT</b></div>
-            <button id="logout" class="nav"><b>Logout</b></button>
-        </div>
+      <div id="nav-space">
+        <div id="logo" class="nav">📈Level-Up</div>
+        <input id="sub-choose" class="nav" placeholder="Enter Your Subject" />
+        <button id="sub-enter"><b>Enter</b></button>
+        <div id="name-box" class="nav"><b>TEXT</b></div>
+        <button id="logout" class="nav"><b>Logout</b></button>
+      </div>
     </navbar>
     <div id="hero-section">
-        <div id="score-space">
-            <div id="level"     class="info-box">
-                <p>CURRENT LEVEL</p>
-                <p></p>
-            </div>
-            <div id="exp"       class="info-box">
-                <p>EXPERIENCE (XP)</p>
-                <p></p>
-            </div>
-            <div id="streak"    class="info-box">
-                <p>🔥NEXT TARGET</p>
-                <p></p>
-            </div>
+      <div id="score-space">
+        <div id="level" class="info-box">
+          <p>CURRENT LEVEL</p>
+          <p></p>
         </div>
+        <div id="exp" class="info-box">
+          <p>EXPERIENCE (XP)</p>
+          <p></p>
+        </div>
+        <div id="streak" class="info-box">
+          <p>🔥NEXT TARGET</p>
+          <p></p>
+        </div>
+      </div>
 
-        <div id="menu-section">
-            <div id="menu-heading" class="menu-item">
-                <h2><b>📋Today's Quest</b></h2>
-                <div id="task-status">
-                    <p>Task Status</p>
-                </div>
-            </div>
-            <br>
-            <div id="task-input">
-                <input type="text" id="task-box" class="menu-item" placeholder="Add a new task">
-                <button id="add-task">📢<b>Add Task</b></button>
-            </div>
-            <div id="task-space" class="menu-item"></div>
+      <div id="menu-section">
+        <div id="menu-heading" class="menu-item">
+          <h2><b>📋Today's Quest</b></h2>
+          <div id="task-status">
+            <p>Task Status</p>
+          </div>
         </div>
-    </div>   
-    <script src="../scripts/dashboard.js"></script> 
-</body>
+        <br />
+        <div id="task-input">
+          <input
+            type="text"
+            id="task-box"
+            class="menu-item"
+            placeholder="Add a new task"
+          />
+          <button id="add-task">📢<b>Add Task</b></button>
+        </div>
+        <div id="task-space" class="menu-item"></div>
+      </div>
+    </div>
+    <script src="../scripts/dashboard.js"></script>
+  </body>
 </html>
