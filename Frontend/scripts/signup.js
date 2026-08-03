@@ -27,17 +27,36 @@ mail.addEventListener('input', function(){
 })
 
 /*--------------Creating Object------------------- */
+async function saveUserData() {
+    const res=await fetch('http://localhost:5000/api/register',{method:'POST',headers:{
+        "Content-type":"application/json"
+    },body:JSON.stringify(newUserINFO)});
+    const data=await res.json();
+    return data;
+    
+}
 
 const newUserINFO = {};
 
-signup.addEventListener('click', function() {
+signup.addEventListener('click', async function() {
     const userName = name.value;
     const Email = mail.value;
     const userPass = pass.value;
 
-    newUserINFO.userame = userName;
+    newUserINFO.username = userName;
     newUserINFO.email = Email;
     newUserINFO.password = userPass;
-})
+    const result=await saveUserData();
+    if(result.success===true){
+        alert('We sent a security pin to you')
+        window.location.href='dashboard.html'
+    }
+    else if(result.status===404){
+        validity.style.color='red';
+        validity.textContent=`${result.message}`
+    }
+    else if(result.success===false){
+        validity.textContent=`User is already exists`
+    }
 
-console.log(newUserINFO);
+})
