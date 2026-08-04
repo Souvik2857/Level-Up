@@ -140,7 +140,7 @@ navbar{
 #menu-section{
     height: 100vh;
     width: 60vw;
-    margin: 5%;
+    margin: 2%;
     border-radius: 17px;
     background-color: #141c2b;
     display: flex;
@@ -156,6 +156,24 @@ navbar{
     flex-direction: row;
     justify-content: space-around;
     margin: 5;
+}
+
+#task-date{
+    color: whitesmoke;
+    background-color: #293c5f;
+    border: 2px solid rgba(4, 4, 100, 0.753);
+    border-radius: 9px;
+    margin-right: 9px;
+    margin-left: 9px;
+    padding: 3px;
+    font-size: larger;
+    font-family: 'Times New Roman', Times, serif;
+    cursor: pointer;
+}
+
+#task-date:hover{
+    background-color: #586a8e;
+    cursor: pointer; 
 }
 
 #task-box{
@@ -185,12 +203,40 @@ navbar{
     margin: 5 auto;
 }
 
+#bottom-space{
+    height: 50px;
+    width: 56.5vw;
+    background-color: #051430;
+    padding: 3%;
+}
+
+#finalise{
+    height: 2.5rem;
+    width: 17%;
+    border: 2px solid white;
+    border-radius: 12px;
+    background-color: #7330f0;
+    margin-left: 78%;
+    font-size: large;
+    font-weight: 800;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#finalise:hover{
+    background-color: #5f3c9ede;
+}
+
+#finalise:active{
+    background-color: grey;
+}
+
 #logout:hover{ 
     background-color: rgba(230, 75, 75, 0.915);
     color: whitesmoke;
     cursor: pointer; 
     transform: scale(1.1);
 }
+
 
 #sub-enter:hover{
     cursor: pointer; 

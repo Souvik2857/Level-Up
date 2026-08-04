@@ -1,9 +1,12 @@
 const addTask = document.querySelector('#add-task');
 const taskBox = document.querySelector('#task-box');
+const taskDate = document.querySelector('#task-date');
 const taskSpace = document.querySelector('#task-space');
 const taskStatus = document.querySelector('#task-status');
 const subChoose = document.querySelector('#sub-choose');
 const subEnter = document.querySelector('#sub-enter');
+const exp = document.querySelector('#exp');
+const endBtn = document.querySelector('#finalise');
 
 /*--------------------Sub-Choose Object-------------*/
 let userSub={};
@@ -15,6 +18,7 @@ subEnter.addEventListener('click', function(){
     if(enterVal.length === 0){
         alert("Enter a subject!");
         enter = 0;
+        return;
     }
 
     enter = 1;
@@ -32,6 +36,18 @@ subEnter.addEventListener('click', function(){
         subEnter.style.background = 'transparent';
     }
 })
+
+/*------------Date-value object---------------*/
+
+function formatDate(dateString){
+    if(!dateString){
+        return 'no date';
+    }
+
+    const date = new Date(dateString);
+    const options = {day: 'numeric', month: 'short', year: 'numeric'};
+    return date.toLocaleDateString('en-US', options);
+}
 
 
 /*------------Create Object--------------------*/
@@ -52,6 +68,8 @@ function display() {
     /*-----------------Task Completion Counter----------------*/
     const totalTasks = taskList.length;
     const completedTasks = countCompletedTasks();
+    
+    
     
     if (totalTasks === 0) {
         taskStatus.textContent = '📋 0 tasks';
@@ -86,7 +104,7 @@ function display() {
         checkbox.addEventListener('change', function() {
             if(checkbox.checked){
                 taskList[i].completed = true;
-                checkbox.disable = true;
+                checkbox.disabled = true;
                 display();
             }
         });
@@ -102,6 +120,13 @@ function display() {
         taskElement.style.background = '#1a2332';
         taskElement.style.borderRadius = '8px';
         taskElement.style.borderLeft = '3px solid #4f7df3';
+        
+        const dateElement = document.createElement('span');
+        dateElement.textContent = `${formatDate(taskList[i].date)}`;
+        dateElement.style.color = '#94a3b8';
+        dateElement.style.fontSize = '0.87rem';
+        dateElement.style.marginLeft = '8px';
+        dateElement.style.fontWeight = '300';
         
         if (taskList[i].completed) {
             taskElement.style.textDecoration = 'line-through';
@@ -120,6 +145,7 @@ function display() {
         
         container.appendChild(checkbox);
         container.appendChild(taskElement);
+        container.appendChild(dateElement);
         taskSpace.appendChild(container);
     }
 }
@@ -127,6 +153,7 @@ function display() {
 /*-----------------Task Box-------------------*/
 addTask.addEventListener('click', function() {
     const typedVal = taskBox.value.trim();
+    const selecteDate = taskDate.value;
     
     if (typedVal.length === 0) {
         alert('Enter a proper task!');
@@ -136,16 +163,37 @@ addTask.addEventListener('click', function() {
     taskList.push({
         text: typedVal,
         completed: false,
+        date: taskDate.value || new Date().toISOString().split('T')[0],
+        data: Date(),
     });
     
     taskBox.value = '';
+    taskDate.value = '';
     display();
+    // console.log(taskList);
 });
 
 /*-------------Enter Key-------------------------*/
+
 taskBox.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
         event.preventDefault();
         addTask.click();
     }
 });
+
+/*--------------User Activity Stats--------------*/
+
+let userjourneyEXP = {
+    userName: "Player",
+    Rank: 'E',
+    Exp: 0,
+    Streak: 0,
+};
+
+/*-----------------Final Button Function-----------*/
+
+endBtn.addEventListener('click', function(){
+    const allTasks = taskList;
+    // console.log(allTasks);
+})
