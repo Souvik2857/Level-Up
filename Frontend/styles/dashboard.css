@@ -191,7 +191,7 @@ navbar{
     border: transparent;
     border-radius: 12px;
     background-color: #7330f0;
-    margin-left: 8px;
+    margin-left: 1px;
     transition: transform 0.5s ease;
 }
 
@@ -226,9 +226,6 @@ navbar{
     background-color: #5f3c9ede;
 }
 
-#finalise:active{
-    background-color: grey;
-}
 
 #logout:hover{ 
     background-color: rgba(230, 75, 75, 0.915);
@@ -252,4 +249,20 @@ navbar{
 #add-task:hover{ 
     cursor: pointer; 
     transform: scale(1.1);
+}
+
+#sub-enter:active{
+    background-color: #37127d;
+}
+
+#logout:active{
+    background-color: rgb(79, 1, 1);
+}
+
+#add-task:active{
+    background-color: #280668;
+}
+
+#finalise:active{
+    background-color: #341470;
 }

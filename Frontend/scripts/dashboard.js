@@ -1,3 +1,4 @@
+/*----------------Accessing the elements-----------------*/
 const addTask = document.querySelector('#add-task');
 const taskBox = document.querySelector('#task-box');
 const taskDate = document.querySelector('#task-date');
@@ -8,7 +9,7 @@ const subEnter = document.querySelector('#sub-enter');
 const exp = document.querySelector('#exp');
 const endBtn = document.querySelector('#finalise');
 
-/*--------------------Sub-Choose Object-------------*/
+/*--------------------Creating subject choosing object-------------*/
 let userSub={};
 let enter = 0;
 
@@ -25,7 +26,7 @@ subEnter.addEventListener('click', function(){
     userSub.subject = enterVal;
     userSub.time = Date();
     
-    /*------------Sub Enter ---------------------*/
+    /*------------When the user will enter their subject---------------------*/
     
     if(enter === 1){
         subChoose.style.textDecoration = 'line-through';
@@ -50,7 +51,7 @@ function formatDate(dateString){
 }
 
 
-/*------------Create Object--------------------*/
+/*-------------Count of the total tasks User created--------------------*/
 let taskList = [];
 
 function countCompletedTasks() {
@@ -65,8 +66,8 @@ function countCompletedTasks() {
 
 /*---------Display Function------------ */
 function display() {
-    /*-----------------Task Completion Counter----------------*/
     const totalTasks = taskList.length;
+    /*-----------------Task Completion Counter----------------*/
     const completedTasks = countCompletedTasks();
     
     
@@ -92,6 +93,7 @@ function display() {
     
     /*--------------Display Tasks--------------------------*/
     for (let i = 0; i < taskList.length; i++) {
+        /*----------------Checkbox display----------------------*/
         const checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.checked = taskList[i].completed;
@@ -101,6 +103,7 @@ function display() {
         checkbox.style.accentColor = '#4f7df3';
         checkbox.style.cursor = 'pointer';
         
+        /*---------------Making the Checkbox Work properly--------------*/
         checkbox.addEventListener('change', function() {
             if(checkbox.checked){
                 taskList[i].completed = true;
@@ -120,7 +123,8 @@ function display() {
         taskElement.style.background = '#1a2332';
         taskElement.style.borderRadius = '8px';
         taskElement.style.borderLeft = '3px solid #4f7df3';
-        
+
+        /*-----------------Displaying the dates with the tasks--------------*/
         const dateElement = document.createElement('span');
         dateElement.textContent = `${formatDate(taskList[i].date)}`;
         dateElement.style.color = '#94a3b8';
@@ -128,6 +132,7 @@ function display() {
         dateElement.style.marginLeft = '8px';
         dateElement.style.fontWeight = '300';
         
+        /*------------------Task completion code-----------------------*/
         if (taskList[i].completed) {
             taskElement.style.textDecoration = 'line-through';
             taskElement.style.color = '#475569';
@@ -138,6 +143,7 @@ function display() {
             taskElement.style.borderLeftColor = '#4f7df3';
         }
         
+        /*-------------------Task boxes styling--------------------*/
         const container = document.createElement('div');
         container.style.display = 'flex';
         container.style.alignItems = 'center';
@@ -150,7 +156,7 @@ function display() {
     }
 }
 
-/*-----------------Task Box-------------------*/
+/*-----------------Task Box content store-------------------*/
 addTask.addEventListener('click', function() {
     const typedVal = taskBox.value.trim();
     const selecteDate = taskDate.value;
@@ -173,8 +179,7 @@ addTask.addEventListener('click', function() {
     // console.log(taskList);
 });
 
-/*-------------Enter Key-------------------------*/
-
+/*-------------Making Enter Key work-------------------------*/
 taskBox.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
         event.preventDefault();
@@ -192,7 +197,6 @@ let userjourneyEXP = {
 };
 
 /*-----------------Final Button Function-----------*/
-
 endBtn.addEventListener('click', function(){
     const allTasks = taskList;
     // console.log(allTasks);
