@@ -199,5 +199,15 @@ let userjourneyEXP = {
 /*-----------------Final Button Function-----------*/
 endBtn.addEventListener('click', function(){
     const allTasks = taskList;
+    endBtn.disabled = true;
+    endBtn.style.background = 'grey';
+    const response = prompt("Enter your Security key");
+
+    if(response === null){
+        prompt("!Enter proper security key!");
+    }else{
+        console.log(response);
+        return response;
+    }
     // console.log(allTasks);
 })
