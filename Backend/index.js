@@ -172,30 +172,32 @@ app.post("/api/user/dashboard", async (req, res) => {
 });
 //For save user dashboard Data
 app.post("/api/user/dashboard/saveData", async (req, res) => {
-  const userData = req.body;
-  const addToUserData = await User.findOneAndUpdate(
-    { email: userData.email },
-    { $set: { username: userData.username } },
-    { new: true },
-  );
-  const addTaskOfUser = await Task.findOneAndUpdate(
-    { email: userData.email },
-    {
-      $set: {
-        subject: userData.subject,
-        tasks: userData.tasks,
-        rank: userData.rank,
-        XP: userData.XP,
-      },
-    },
-    { new: true },
-  );
-  // console.log(
-  //   new Date().toISOString().split("T")[0] === addTaskOfUser.tasks[0].time,
-  // );
-
-  res.send({ status: 200 });
-});
+  const userData = req.body; 
+      const findUserData = await User.findOne(
+        { securityKey: userData.pin}
+      ); 
+      if(!findUserData){
+        return res.send({status:404,message:'Wrong Security Pin'})
+      }
+      try{
+        const addTaskOfUser = await Task.findOneAndUpdate(
+          { email: findUserData.email },
+          {
+            $set: {
+              subject: userData.subject,
+              tasks: userData.tasks,
+              rank: userData.rank,
+              XP: userData.XP,
+            },
+          },
+          { new: true },
+        );
+        return res.send({ status: 200 });
+      }catch(err){
+        return res.send({status:500});
+      }
+    
+    });
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);

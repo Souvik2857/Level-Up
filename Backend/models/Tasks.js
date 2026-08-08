@@ -5,7 +5,7 @@ const taskSchema = new mongoose.Schema({
     subject: { type: String,default:""},
     tasks: {type:Array,default:[]},
     rank:{type:String,required:true,default:"E"},
-    XP:{type:Number,default:100},
+    XP:{type:Number,default:0},
     isDone: {type:Boolean,default:false}
 })
 
