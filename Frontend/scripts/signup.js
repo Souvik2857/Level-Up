@@ -28,6 +28,7 @@ mail.addEventListener('input', function(){
 
 /*--------------Creating Object------------------- */
 async function saveUserData() {
+    validity.textContent="Verifying your gmail";
     const res=await fetch('http://localhost:5000/api/register',{method:'POST',headers:{
         "Content-type":"application/json"
     },body:JSON.stringify(newUserINFO)});
