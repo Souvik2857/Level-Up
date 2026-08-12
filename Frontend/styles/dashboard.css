@@ -37,7 +37,7 @@ navbar{
     color: #a855f7;
     text-align: center;
     font-family: 'Cambria', 'Cochin', 'Georgia', 'Times', 'Times New Roman', 'serif';
-    font-size: xx-large;
+    font-size: 24px;
     font-weight: 900;
 }
 
@@ -109,7 +109,6 @@ navbar{
     color: #a855f7;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
     font-size: x-large;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', 'Arial', 'sans-serif';
@@ -265,4 +264,7 @@ navbar{
 
 #finalise:active{
     background-color: #341470;
+}
+.stats{
+    font-size: 1.5em;
 }
