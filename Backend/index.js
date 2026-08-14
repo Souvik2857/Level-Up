@@ -6,9 +6,10 @@ const bcrypt = require("bcrypt");
 const User = require("./models/User");
 const Task = require("./models/Tasks");
 const cors = require("cors");
-const { GoogleGenAI } = require("@google/genai");
+const { GoogleGenAI, TurnCoverage } = require("@google/genai");
 const nodemailer = require("nodemailer");
 const rateLimit = require("express-rate-limit");
+const Tasks = require("./models/Tasks");
 require("dotenv").config();
 
 app.use(express.json());
@@ -167,7 +168,7 @@ app.post("/api/user/dashboard", async (req, res) => {
       });
     }
   } else {
-    res.send({ message: "Wrong security pin", success: false });
+    return res.send({status:false});
   }
 });
 //For save user dashboard Data
@@ -199,6 +200,18 @@ app.post("/api/user/dashboard/saveData", async (req, res) => {
     
     });
 
+    //for updating the checkbox state and save to DB
+    app.patch("/api/updateState",async(req,res)=>{
+      const data=req.body;
+      
+       try{
+         const saveState=await Tasks.findOneAndUpdate({email:data.email},{$set:{tasks:data.tasks}},{ returnDocument: 'after' })     
+         return res.send({status:200})
+        }catch(err){
+          return res.send({status:501})
+        }
+      
+    })
 app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
+  console.log(`LevelUp server listening on port ${port}`);
 });
